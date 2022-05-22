@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Belajar Dasar CRUD dengan PHP dan MySQL">
-    <title>Data Mahasiswa</title>
+    <title>PHP Crud Example</title>
 
     <!-- bootstrap cdn -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
@@ -52,7 +52,7 @@
             </div> -->
             <!-- tambah data -->
             <div class="card-body">
-                <h3 class="card-title">Tambah Data Mahasiswa</h3>
+                <h3 class="card-title">Student Datas</h3>
                 <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque facere, delectus perferendis quos vel deleniti velit laborum eligendi esse quasi, nesciunt accusantium. Obcaecati impedit, deleniti totam cum recusandae rem placeat? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate deserunt magnam libero veritatis quisquam nobis! Odit cupiditate, minima consequatur expedita nulla dolor eos fuga. Blanditiis, repudiandae. Nemo harum cupiditate eum?</p>
 
                 <!-- tampilkan pesan sukses ditambah -->
@@ -60,12 +60,12 @@
                     <?php
                     if ($_GET['status'] == 'sukses')
                         echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-                        <strong>Sukses!</strong> Data berhasil ditambahkan!
+                        <strong>Success!</strong>
                         <button type='button' class='btn-close' onclick='clicking()' data-bs-dismiss='alert' aria-label='Close'></button>
                       </div>";
                     else
                         echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-                        <strong>Ups!</strong> Data gagal ditambahkan!
+                        <strong>Ups!</strong> Failed!
                         <button type='button' class='btn-close' onclick='clicking()' data-bs-dismiss='alert' aria-label='Close'></button>
                       </div>";
                     ?>
@@ -75,16 +75,16 @@
                 <form class="row g-3" action="tambah.php" method="POST">
 
                     <div class="col-12">
-                        <label for="nama" class="form-label">Nama</label>
+                        <label for="nama" class="form-label">Name</label>
                         <input type="text" name="nama" class="form-control" placeholder="Steve Jobs" required>
                     </div>
                     <div class="col-md-4">
-                        <label for="NIM" class="form-label">NIM</label>
+                        <label for="NIM" class="form-label">ID</label>
                         <input type="text" name="NIM" class="form-control" placeholder="G64190021" required>
                     </div>
 
                     <div class="col-md-4">
-                        <label for="Agama" class="form-label">Agama</label>
+                        <label for="Agama" class="form-label">Religion</label>
                         <select class="form-select" name="agama" aria-label="Default select example">
                             <option value="Hindu">Hindu</option>
                             <option value="Buddha">Buddha</option>
@@ -96,31 +96,31 @@
                     </div>
 
                     <div class="col-md-4">
-                        <label for="tittle" class="form-label">Jenis Kelamin</label>
+                        <label for="tittle" class="form-label">Gender</label>
                         <div class="col-md-12">
                             <div class="form-check form-check-inline">
-                                <label class="form-check-label" for="jenis_kelamin">Laki-Laki</label>
+                                <label class="form-check-label" for="jenis_kelamin">Man</label>
                                 <input class="form-check-input" type="radio" name="jenis_kelamin" value="Laki-Laki">
                             </div>
                             <div class="form-check form-check-inline">
-                                <label class="form-check-label" for="jenis_kelamin">Perempuan</label>
+                                <label class="form-check-label" for="jenis_kelamin">Woman</label>
                                 <input class="form-check-input" type="radio" name="jenis_kelamin" value="Perempuan">
                             </div>
                         </div>
                     </div>
 
                     <div class="col-md-6">
-                        <label for="Jurusan" class="form-label">Jurusan</label>
-                        <input type="text" name="jurusan" class="form-control" placeholder="Ilmu Komputer" required>
+                        <label for="Jurusan" class="form-label">Department</label>
+                        <input type="text" name="jurusan" class="form-control" placeholder="Computer science" required>
                     </div>
 
                     <div class="col-md-6">
-                        <label for="IPK" class="form-label">IPK</label>
-                        <input type="number" step=0.01 name="IPK" class=" form-control" placeholder="3.52" required>
+                        <label for="IPK" class="form-label">GPA</label>
+                        <input type="number" step=0.01 name="GPA" class=" form-control" placeholder="3.52" required>
                     </div>
 
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary" value="daftar" name="tambah"><i class="fa fa-plus"></i><span class="ms-2">Tambah Data</span></button>
+                        <button type="submit" class="btn btn-primary" value="daftar" name="tambah"><i class="fa fa-plus"></i><span class="ms-2">Add</span></button>
                     </div>
                 </form>
             </div>
@@ -128,12 +128,12 @@
 
 
         <!-- judul tabel -->
-        <h5 class="mb-3">Daftar Mahasiswa Saya</h5>
+        <h5 class="mb-3">My Student List</h5>
 
         <div class="row my-3">
             <div class="col-md-2 mb-3">
                 <select class="form-select" aria-label="Default select example">
-                    <option selected>Tampilkan Entri</option>
+                    <option selected>Show Entries</option>
                     <option value="10">10</option>
                     <option value="25">25</option>
                     <option value="50">50</option>
@@ -142,7 +142,7 @@
             </div>
             <div class="col-md-3 ms-auto">
                 <div class="input-group mb-3 ms-auto">
-                    <input type="text" class="form-control" placeholder="Cari Sesuatu..." aria-label="cari" aria-describedby="button-addon2">
+                    <input type="text" class="form-control" placeholder="Find Something..." aria-label="cari" aria-describedby="button-addon2">
                     <button class="btn btn-primary" type="button" id="button-addon2"><i class="fa fa-search"></i></button>
                 </div>
             </div>
@@ -170,12 +170,12 @@
             <?php
             if ($_GET['update'] == 'sukses')
                 echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-                        <strong>Sukses!</strong> Data berhasil diupdate!
+                        <strong>Success!</strong>
                         <button type='button' class='btn-close' onclick='clicking()' data-bs-dismiss='alert' aria-label='Close'></button>
                       </div>";
             else
                 echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-                        <strong>Ups!</strong> Data gagal diupdate!
+                        <strong>Ups!</strong> Failed!
                         <button type='button' class='btn-close' onclick='clicking()' data-bs-dismiss='alert' aria-label='Close'></button>
                       </div>";
             ?>
@@ -190,8 +190,8 @@
             echo "<thead>";
             echo "<tr>";
             echo "<th scope='col' class='text-center'>No</th>";
-            echo "<th scope='col'>Nama</th>";
-            echo "<th scope='col'>NIM</th>";
+            echo "<th scope='col'>Name</th>";
+            echo "<th scope='col'>ID</th>";
             echo "<th scope='col'>Jenis Kelamin</th>";
             echo "<th scope='col'>Jurusan</th>";
             echo "<th scope='col'>Agama</th>";

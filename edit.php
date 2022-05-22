@@ -23,4 +23,4 @@ if (isset($_POST['edit_data'])) {
     else
         header('Location: ./index.php?update=gagal');
 } else
-    die("Akses dilarang...");
+    die("Forbidden...");

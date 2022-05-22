@@ -22,4 +22,4 @@ if (isset($_POST['tambah'])) {
     else
         header('Location: ./index.php?status=gagal');
 } else
-    die("Akses dilarang...");
+    die("Forbidden...");

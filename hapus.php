@@ -15,4 +15,4 @@ if (isset($_POST['deletedata'])) {
     } else
         die('Location: ./index.php?hapus=gagal');
 } else
-    die("akses dilarang...");
+    die("Forbidden...");
