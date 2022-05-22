@@ -3,11 +3,10 @@
 
 $secret_result = shell_exec('./get-secret.sh');
 $secrets = json_decode($secret_result);
-print_r($secrets);
-$server = "localhost";
-$user = "root";
-$password = "";
-$nama_database = "mahasiswa";
+$server = $secrets['host'];
+$user = $secrets['username'];
+$password = $secrets['password'];
+$nama_database = $secrets['dbInstanceIdentifier'];
 
 $db = mysqli_connect($server, $user, $password, $nama_database);
 
