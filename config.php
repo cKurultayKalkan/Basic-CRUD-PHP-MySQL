@@ -1,5 +1,9 @@
 <?php
 
+
+$secret_result = shell_exec('./get-secret.php');
+$secrets = json_decode($secret_result);
+print_r($secrets);
 $server = "localhost";
 $user = "root";
 $password = "";
