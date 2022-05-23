@@ -3,7 +3,7 @@
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
-
+require_once 'credentials.php';
 
 $path_current = getcwd();
 $secret_result = shell_exec($path_current . '/get-secret.sh');
