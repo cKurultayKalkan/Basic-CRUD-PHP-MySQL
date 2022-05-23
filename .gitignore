@@ -1,4 +1,5 @@
 .DS_Store
 .idea/
 docker-compose.yml
-credentials.php
+cloudformation.yml
+nat.yaml
