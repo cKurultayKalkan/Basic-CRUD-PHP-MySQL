@@ -1,7 +1,7 @@
 <?php
 
-
-$secret_result = shell_exec('./get-secret.sh');
+$path_current = getcwd();
+$secret_result = shell_exec($path_current . '/get-secret.sh');
 $secrets = json_decode($secret_result);
 $server = $secrets->host;
 $user = $secrets->username;
