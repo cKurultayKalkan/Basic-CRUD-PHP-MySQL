@@ -32,8 +32,6 @@ curl_setopt($get_region, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($get_region, CURLOPT_HTTPHEADER, array($token_header));
 $region_raw = curl_exec($get_region);
 
-curl_close($get_region);
-
 if (curl_error($get_region)) {
     print_r("Token Error");
     print curl_error($get_region);
@@ -43,6 +41,9 @@ if (curl_error($get_region)) {
     print_r('AWS Region:' . $aws_region);
 }
 
+curl_close($get_region);
+
+
 $url = "http://169.254.169.254/latest/meta-data/iam/security-credentials/" . $target_role_name;
 
 $get_credentials = curl_init($url);
@@ -50,7 +51,6 @@ curl_setopt($get_credentials, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($get_credentials, CURLOPT_FOLLOWLOCATION, true);
 curl_setopt($get_credentials, CURLOPT_HTTPHEADER, array($token_header));
 $credentials_raw = curl_exec($get_credentials);
-curl_close($get_credentials);
 
 if (curl_error($get_credentials)) {
     print_r("CredentialsError");
@@ -59,6 +59,7 @@ if (curl_error($get_credentials)) {
     $credentials = json_decode($credentials_raw);
 }
 
+curl_close($get_credentials);
 
 putenv('AWS_DEFAULT_REGION=' . $aws_region);
 putenv('AWS_ACCESS_KEY_ID=' . $credentials->AccessKeyId);
