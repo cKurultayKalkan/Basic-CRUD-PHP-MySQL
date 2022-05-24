@@ -3,3 +3,5 @@
 docker-compose.yml
 cloudformation.yml
 nat.yaml
+launch.yml
+network.yml

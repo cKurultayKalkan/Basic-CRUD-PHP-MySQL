@@ -10,8 +10,6 @@ $token = curl_exec($get_token_ch);
 if (curl_error($get_token_ch)) {
     print_r("Token Error");
     print curl_error($get_token_ch);
-} else {
-    print_r($token);
 }
 
 $get_user_role_name = curl_init("http://169.254.169.254/latest/meta-data/iam/info");
@@ -25,7 +23,6 @@ if (curl_error($get_user_role_name)) {
     print_r("Role Error");
     print curl_error($get_user_role_name);
 } else {
-    print_r($role_name_parsed->InstanceProfileArn);
     $splitted = explode("/", $role_name_parsed->InstanceProfileArn);
     $target_role_name = $splitted[1];
 }
@@ -40,10 +37,9 @@ if (curl_error($get_region)) {
     print_r("Token Error");
     print curl_error($get_region);
 } else {
-    print_r($region_raw);
-    $region_raw = "ip-172-31-4-158.us-west-1.compute.internal";
     $b = explode(".", $region_raw);
     $aws_region = $b[1];
+    print_r('AWS Region:'. $aws_region);
 }
 
 $get_credentials = curl_init("http://169.254.169.254/latest/meta-data/iam/security-credentials/" . $target_role_name);
@@ -51,8 +47,6 @@ curl_setopt($get_credentials, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($get_credentials, CURLOPT_HTTPHEADER, array($token_header));
 $credentials_raw = curl_exec($get_credentials);
 curl_close($get_credentials);
-print_r($get_credentials);
-
 
 if (curl_error($get_credentials)) {
     print_r("CredentialsError");
