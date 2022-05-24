@@ -53,7 +53,6 @@ if (curl_error($get_credentials)) {
     print_r("CredentialsError");
     print curl_error($get_credentials);
 } else {
-    print_r($credentials_raw);
     $credentials = json_decode($credentials_raw);
 }
 
@@ -61,3 +60,5 @@ if (curl_error($get_credentials)) {
 putenv('AWS_DEFAULT_REGION=' . $aws_region);
 putenv('AWS_ACCESS_KEY_ID=' . $credentials->AccessKeyId);
 putenv('AWS_SECRET_ACCESS_KEY=' . $credentials->SecretAccessKey);
+putenv('AWS_SECURITY_TOKEN=' . $credentials->Token);
+

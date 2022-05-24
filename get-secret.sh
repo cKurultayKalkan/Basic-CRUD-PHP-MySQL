@@ -1,3 +1,3 @@
 #!/bin/bash
 
-aws secretsmanager get-secret-value --secret-id /upwork/cloudfront/rds --output text --query SecretString
+aws secretsmanager get-secret-value --secret-id "/cloudfront/rds-$STACK_NAME" --output text --query SecretString
